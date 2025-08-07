@@ -1,0 +1,22 @@
+//app.js is like the program.cs file in mvc
+
+const express = require('express'); //calling express to be used throughout the app
+
+//call in our router
+const testRoutes = require('./routes/testRoutes.js')
+
+const app = express(); //runs express with default parameters
+
+app.use(express.json) //interpret json going in and sending back out, imports json middleware to allow json in app
+
+//prints out to console when a request is passed to the api to see which endpoitn is called
+//looks at request, generates a response and handles next incoming request
+app.use((req, res, next) => { //using parameters and then execute the next lines of code
+    console.log(`${req.method} ${req.url}`); //prints out the method and url of the request to the console (terminal)
+    next(); //prepare to handle the next incoming request
+})
+
+app.listen(3000, () => {
+    console.log(`The API is lisetning on port 3000`); //prints out to the console that the API is listening on port 3000
+})
+
