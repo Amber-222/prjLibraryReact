@@ -7,7 +7,7 @@ const testRoutes = require('./routes/testRoutes.js')
 
 const app = express(); //runs express with default parameters
 
-app.use(express.json) //interpret json going in and sending back out, imports json middleware to allow json in app
+app.use(express.json()) //interpret json going in and sending back out, imports json middleware to allow json in app
 
 //prints out to console when a request is passed to the api to see which endpoitn is called
 //looks at request, generates a response and handles next incoming request
@@ -21,7 +21,7 @@ app.use((req, res, next) => { //using parameters and then execute the next lines
 //finally point the app to where the routes live
 app.use('/v1/test', testRoutes) //go look in the testRoutes to see if the function the user calls actually exists
 
-app.listen(3000, () => {
+app.listen(3001, () => {
     console.log(`The API is lisetning on port 3000`); //prints out to the console that the API is listening on port 3000
 })
 
