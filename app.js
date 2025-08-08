@@ -1,6 +1,8 @@
 //app.js is like the program.cs file in mvc
 
 const express = require('express'); //calling express to be used throughout the app
+require(`dotenv`).config()
+const port = process.env.API_PORT || 3001 //default passed if no value is specified
 
 //call in our router
 const testRoutes = require('./routes/testRoutes.js')
@@ -17,11 +19,11 @@ app.use((req, res, next) => { //using parameters and then execute the next lines
 })
 
 //version our api so that breaking changes can live in a new version
-//thens pecify an area for the routes to live in
+//then specify an area for the routes to live in
 //finally point the app to where the routes live
 app.use('/v1/test', testRoutes) //go look in the testRoutes to see if the function the user calls actually exists
 
 app.listen(3001, () => {
-    console.log(`The API is lisetning on port 3000`); //prints out to the console that the API is listening on port 3000
+    console.log(`The API is lisetning on port ${port}`); //prints out to the console that the API is listening on port 3000
 })
 
