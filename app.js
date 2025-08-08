@@ -27,3 +27,5 @@ app.listen(3001, () => {
     console.log(`The API is lisetning on port ${port}`); //prints out to the console that the API is listening on port 3000
 })
 
+//WHEN CLONING DOWN
+//TERMINAL: npm i TO INSTALL ALL THE DEPENDENCIES
