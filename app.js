@@ -3,6 +3,7 @@
 const express = require('express'); //calling express to be used throughout the app
 require(`dotenv`).config()
 const port = process.env.API_PORT || 3001 //default passed if no value is specified
+const {connectToMongo} = require('./services/dbService.js')
 
 //call in our router
 const testRoutes = require('./routes/testRoutes.js')
@@ -22,6 +23,9 @@ app.use((req, res, next) => { //using parameters and then execute the next lines
 //then specify an area for the routes to live in
 //finally point the app to where the routes live
 app.use('/v1/test', testRoutes) //go look in the testRoutes to see if the function the user calls actually exists
+
+//call method from dbService class to connect to mongo
+connectToMongo();
 
 app.listen(3001, () => {
     console.log(`The API is lisetning on port ${port}`); //prints out to the console that the API is listening on port 3000
