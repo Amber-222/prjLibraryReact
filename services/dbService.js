@@ -17,3 +17,5 @@ const connectToMongo = async () => { //unlike in controller, method doesnt requi
         process.exit(1)
     }
 }
+
+module.exports = {connectToMongo}
