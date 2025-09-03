@@ -1,5 +1,4 @@
 //app.js is like the program.cs file in mvc
-
 const express = require('express'); //calling express to be used throughout the app
 require(`dotenv`).config()
 const port = process.env.API_PORT || 3001 //default passed if no value is specified
@@ -7,6 +6,7 @@ const {connectToMongo} = require('./services/dbService.js')
 
 //call in our router
 const testRoutes = require('./routes/testRoutes.js')
+const bookRoutes = require('./routes/bookRoutes.js')
 
 const app = express(); //runs express with default parameters
 
@@ -23,6 +23,7 @@ app.use((req, res, next) => { //using parameters and then execute the next lines
 //then specify an area for the routes to live in
 //finally point the app to where the routes live
 app.use('/v1/test', testRoutes) //go look in the testRoutes to see if the function the user calls actually exists
+app.use('/v1/books', bookRoutes)
 
 //call method from dbService class to connect to mongo
 connectToMongo();
