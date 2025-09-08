@@ -10,7 +10,7 @@ services:
     # expose these ports
     ports:
       # port on local pc : port in the container
-      - "3000:3000"
+      - "3001:3001"
 
   # define options to run frontend
   library_frontend: 

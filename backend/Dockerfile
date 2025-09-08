@@ -14,7 +14,7 @@ RUN npm i
 COPY . .
 
 # Allow app to talk to outside world
-EXPOSE 3000
+EXPOSE 3001
 
 # Run the api - each item in quotes to show spaces in the command
 CMD ["npm", "run", "dev"]
