@@ -13,7 +13,7 @@ export function authProvider({children}) { //any child object this method has to
     return (
         //providing ino from this context to the rest of the app to check status anywhere as needed with handling login and logout on the pages
         <authContext.Provider value={{isAuthenticated, login, logout}}>
-
+            {children}
         </authContext.Provider>
     )
 }

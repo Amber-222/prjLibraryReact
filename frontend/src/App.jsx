@@ -3,6 +3,7 @@ import {BrowserRouter as Router , Routes, Route} from 'react-router-dom'
 import Home from './pages/home.jsx'
 import Dashboard from './pages/dashboard.jsx'
 import Login from './pages/login.jsx'
+import ProtectedRoute from './components/protectedRoute.jsx'
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/login" element={<Login/>}/>
-        <Route path="/dashboard" element={<Dashboard/>}/>
+        <Route path="/dashboard" element={<ProtectedRoute> <Dashboard/> </ProtectedRoute>}/>
       </Routes>
     </Router>
   )
