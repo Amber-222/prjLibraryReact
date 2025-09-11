@@ -1,5 +1,5 @@
 //calling in required imports tp handle routing between multiple pages
-import {BrowserRouter as Router , Routes, Route} from 'react-router-dom'
+import { BrowserRouter as Router , Routes, Route } from 'react-router-dom'
 import Home from './pages/home.jsx'
 import Dashboard from './pages/dashboard.jsx'
 import Login from './pages/login.jsx'
