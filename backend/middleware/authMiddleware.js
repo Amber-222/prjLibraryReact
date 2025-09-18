@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-require('dotenv').configure()
+require('dotenv').config()
 
 //creaet blacklist of tokens we have invalidated
 //cant use token for login again after loggin out

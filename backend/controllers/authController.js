@@ -2,12 +2,13 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const { invalidateToken } = require('../middleware/authMiddleware.js')
 const User = require('../models/userModel.js')
+require('dotenv').config()
 
 //helper method to generate tokens and takes in username
 const generateJwt = (username) => {
     //signs it using the scret in env file
-    return jwt.sign(username, process.env.JWT_SECRET, {
-        expiresIn: '1h' //expiring in 1 hour from creatuion
+    return jwt.sign({username}, process.env.JWT_SECRET, {
+        expiresIn: "1h", //expiring in 1 hour from creatuion
     })
 }
 
@@ -15,12 +16,12 @@ const register = async (req, res) => {
     //pull required info from incoming request
     const { username, password } = req.body
     //before signing user up, check if username already used
-    const exists = User.findOne({username: username})
+    const exists = await User.findOne({username: username})
     //if so, say no
     if (exists) return res.status(400).json({message: "User already exists."})
 
     //if not, hash the password
-    const hashedPassword = bcrypt.hash(password, 10)
+    const hashedPassword = await bcrypt.hash(password, 10)
 
     try {
         User.create({username: username, password: hashedPassword})
@@ -33,7 +34,7 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
     const { username, password } = req.body
-    const exists = User.findOne({username: username})
+    const exists = await User.findOne({username: username})
 
     //if not, reject and tell them to try again
     if (!exists) return res.status(400).json({message: "Invalid credentials"})

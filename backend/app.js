@@ -8,6 +8,7 @@ const {securityMiddleware} = require('./middleware/securityMiddleware.js')
 //call in our router
 const testRoutes = require('./routes/testRoutes.js')
 const bookRoutes = require('./routes/bookRoutes.js')
+const authRoutes = require('./routes/authRoutes.js')
 
 const app = express(); //runs express with default parameters
 
@@ -28,6 +29,7 @@ app.use((req, res, next) => { //using parameters and then execute the next lines
 //finally point the app to where the routes live
 app.use('/v1/test', testRoutes) //go look in the testRoutes to see if the function the user calls actually exists
 app.use('/v1/books', bookRoutes)
+app.use('/v1/auth', authRoutes)
 
 //call method from dbService class to connect to mongo
 connectToMongo();
